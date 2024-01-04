@@ -1,6 +1,6 @@
 package com.time.trip.openapi.response;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * @author changlezhong
@@ -9,11 +9,11 @@ import io.swagger.annotations.ApiModelProperty;
 public class Response extends DTO {
 
     private static final long serialVersionUID = 1L;
-    @ApiModelProperty("是否成功")
+    @Schema(description = "是否成功")
     private boolean success;
-    @ApiModelProperty("错误编码")
+    @Schema(description = "错误编码")
     private String errCode;
-    @ApiModelProperty("错误信息")
+    @Schema(description = "错误信息")
     private String errMessage;
 
     public boolean isSuccess() {

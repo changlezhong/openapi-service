@@ -1,15 +1,15 @@
 package com.time.trip.openapi.form;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
 public class DemoForm {
 
-    @ApiModelProperty("demo id")
+    @Schema(description = "demo id")
     private String demoId;
 
-    @ApiModelProperty("demo名称")
+    @Schema(description = "demo 名称")
     private String demoName;
 
 }

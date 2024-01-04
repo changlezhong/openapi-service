@@ -1,47 +1,40 @@
 package com.time.trip.openapi.config;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@EnableSwagger2
 public class SwaggerConfig {
 
     @Bean
-    public Docket testApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("test")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.time.trip.openapi.controller.test"))
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(apiInfo());
+    public GroupedOpenApi testApi() {
+        return GroupedOpenApi.builder()
+                // 组名
+                .group("test")
+                // 扫描的包
+                .packagesToScan("com.time.trip.openapi.controller.test")
+                .build();
     }
 
     @Bean
-    public Docket demoApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("demo")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.time.trip.openapi.controller.demo"))
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(apiInfo());
+    public GroupedOpenApi demoApi() {
+        return GroupedOpenApi.builder()
+                // 组名
+                .group("demo")
+                // 扫描的包
+                .packagesToScan("com.time.trip.openapi.controller.demo")
+                .build();
     }
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("OpenAPI 接口文档")
-                .description("OpenAPI 接口文档")
-                .version("1.0.0")
-                .build();
+    @Bean
+    public OpenAPI springDocOpenAPI() {
+        return new OpenAPI()
+                .info(new Info().title("OpenAPI 接口文档")
+                        .description("OpenAPI 接口文档")
+                        .version("v1"));
     }
 
 }

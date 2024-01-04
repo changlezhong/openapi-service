@@ -1,13 +1,13 @@
 package com.time.trip.openapi.response;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * @author changlezhong
  * 
  */
 public class SingleResponse<T> extends Response {
-    @ApiModelProperty("数据")
+    @Schema(description = "数据")
     private T data;
 
     public static <T> SingleResponse<T> of(T data) {

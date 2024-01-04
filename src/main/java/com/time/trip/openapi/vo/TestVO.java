@@ -1,15 +1,15 @@
 package com.time.trip.openapi.vo;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
 public class TestVO {
 
-    @ApiModelProperty("test id")
+    @Schema(title = "testId", description = "test id")
     private String testId;
 
-    @ApiModelProperty("test名称")
+    @Schema(title = "testName", description = "test 名称")
     private String testName;
 
 }
