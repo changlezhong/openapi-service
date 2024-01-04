@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 public class TestVO {
 
-    @Schema(title = "testId", description = "test id")
+    @Schema(description = "test id")
     private String testId;
 
-    @Schema(title = "testName", description = "test 名称")
+    @Schema(description = "test 名称")
     private String testName;
 
 }
